@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Choicer Voicer · Export Studio</title><link rel="stylesheet" href="style.css"></head>
+<body><main>
+<header><span class="eyebrow">CHOICER VOICER / LOCAL EXPORTER</span><h1>Your voices.<br>One finished scene.</h1><p>Record in the game as usual. Your takes are backed up on this device.</p></header>
+<section class="card"><div class="row"><h2>Choose a pack</h2><button id="refresh" class="quiet">Refresh list</button></div>
+<label for="packs">Saved sessions</label><select id="packs"><option value="">No saved takes yet</option></select>
+<p id="summary">Open a voice pack and record, then click the extension icon.</p>
+<div class="row"><button id="import" class="quiet">Import recording backup</button><input id="file" type="file" accept=".json,application/json" hidden><button id="backup" class="quiet" disabled>Download backup</button></div>
+</section>
+<section class="card"><h2>Export video</h2><label for="backing">Backing track <span id="volume">25%</span></label><input id="backing" type="range" min="0" max="100" value="25">
+<p class="hint">Uses your takes at the pack’s timestamps. Unrecorded lines stay silent. Keep this tab visible during the real-time export.</p>
+<div class="row"><button id="export" disabled>Export dubbed video</button><button id="cancel" class="quiet" hidden>Cancel</button></div>
+<progress id="progress" max="1" value="0"></progress><p id="status" role="status" aria-live="polite">Ready when you are.</p>
+<canvas id="canvas" hidden></canvas><video id="preview" controls playsinline hidden></video>
+<a id="download" class="download" hidden>Download finished video</a></section>
+<footer>No account, uploads, analytics, microphone access, or DevTools required. <details><summary>About older recordings</summary><p>The extension captures takes made after it is active. For an already-open session, import a JSON backup. It can also collect the player instance exposed during our earlier DevTools session. Installing the extension does not refresh your game.</p><p>Backups remain in Chrome’s extension storage until the extension is removed or its data is cleared. Download a backup for long-term safekeeping.</p></details></footer>
+</main><script type="module" src="export.js"></script></body></html>

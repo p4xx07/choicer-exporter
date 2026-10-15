@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "Choicer Voicer Local Exporter",
+  "version": "1.1.0",
+  "minimum_chrome_version": "111",
+  "description": "Back up takes and export dubbed pack videos locally on thechoicervoicergames.com.",
+  "permissions": ["scripting"],
+  "host_permissions": ["https://thechoicervoicergames.com/*"],
+  "background": {"service_worker": "background.js", "type": "module"},
+  "action": {"default_title": "Export Choicer Voicer recordings"},
+  "content_scripts": [
+    {"matches": ["https://thechoicervoicergames.com/*"], "js": ["bridge.js"], "run_at": "document_start"},
+    {"matches": ["https://thechoicervoicergames.com/*"], "js": ["preview.js", "capture.js"], "run_at": "document_start", "world": "MAIN"}
+  ]
+}
